@@ -6,8 +6,6 @@ from sklearn.utils import gen_batches
 
 df = pd.read_csv("./data/minified_data.csv")
 
-print(df.head())
-
 df["NER"] = df["NER"].apply(lambda x: x[1:len(x)-2])
 
 df["title"] = df["title"].str.strip()
@@ -43,5 +41,6 @@ def get_recommendations(title):
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
     sim_scores = sim_scores[1:11]
     recipe_indices = [i[0] for i in sim_scores]
-    return titles.iloc[recipe_indices]
+    df_titles = pd.DataFrame(titles.iloc[recipe_indices])
+    return df_titles.to_numpy()
     
