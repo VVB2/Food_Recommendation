@@ -30,6 +30,13 @@ class DatabaseObject:
     def countDocuments(self):
         count = self.DATABASE['Food'].count_documents({})
         return count
+    
+    def findRecommendedFood(self, food):
+        food_data = []
+        cursor = list(self.DATABASE['Food'].find({'title': food}, {"_id": 0, "ingredients": 0, "directions": 0, "link": 0, "narration": 0}))
+        for document in cursor:
+            food_data.append(document)
+        return food_data
         
     def findFood(self, food):
         food_data = []
