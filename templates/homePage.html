@@ -1,84 +1,76 @@
-{% extends 'layout.html' %}
+{% extends 'layout.html' %} {% block content %}
 
-    {% block content %}
-
-        <!-- Display food -->
-        <div class="row row-cols-1 row-cols-sx-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 mt-2">
-            {% for food in data %}
-                <div class="col">
-                        <a href="/{{ food.title }}" class="link-offset-2 link-underline link-underline-opacity-0">
-                        <div class="card border-warning h-100" style="width: 18rem;">
-                            <img src="{{ food.image_url }}" class="card-img-top" alt="{{ food.title }}" style="height: 250px;">
-                            <div class="card-body">
-                                <h5 class="card-text">{{ food.title }}</h5>    
-                            </div>
-                        </div> 
-                    </a>
+<!-- Display food -->
+<div class="row row-cols-1 row-cols-sx-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 mt-2">
+    {% for food in data %}
+    <div class="col">
+        <a href="/{{ food.title }}" class="link-offset-2 link-underline link-underline-opacity-0">
+            <div class="card border-warning h-100" style="width: 18rem;">
+                <img src="{{ food.image_url }}" class="card-img-top" alt="{{ food.title }}" style="height: 250px;" />
+                <div class="card-body">
+                    <h5 class="card-text">{{ food.title }}</h5>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
 
-        <!-- Pagination -->
-        <nav aria-label="Page navigation example" class="mt-5"> 
-            <ul class="pagination justify-content-center">
-                {% if page_no==1 %}
-                    <li class="page-item disabled">
-                        <a class="page-link" href="?page_no={{page_no-1}}" aria-disabled="true">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                {% else %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page_no={{page_no-1}}">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                {% endif %}
-                {% if 1 not in total_count %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page_no=1">
-                            <span aria-hidden="true">1</span>
-                        </a>
-                    </li>
-                    <li class="page-item disabled">
-                        <a class="page-link" aria-disabled="true">
-                            <span aria-hidden="true">...</span>
-                        </a>
-                    </li>
-                {% endif %}
-                {% for page in total_count %}
-                    {% if page==page_no %}
-                        <li class="page-item active"><a class="page-link" href="?page_no={{page}}">{{ page }}</a></li>
-                    {% else %}
-                        <li class="page-item"><a class="page-link" href="?page_no={{page}}">{{ page }}</a></li>
-                    {% endif %}
-                {% endfor %}
-                {% if 508 not in total_count %}
-                    <li class="page-item disabled">
-                        <a class="page-link" aria-disabled="true">
-                            <span aria-hidden="true">...</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="?page_no=508">
-                            <span aria-hidden="true">508</span>
-                        </a>
-                    </li>
-                {% endif %}
-                {% if page_no==508 %}
-                    <li class="page-item disabled">
-                        <a class="page-link" href="?page_no={{page_no+1}}" aria-disabled="true">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                {% else %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page_no={{page_no+1}}">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                {% endif %}
-            </ul>
-        </nav>
+<!-- Pagination -->
+<nav aria-label="Page navigation example" class="mt-5">
+    <ul class="pagination justify-content-center">
+        {% if page_no==1 %}
+        <li class="page-item disabled">
+            <a class="page-link" href="?page_no={{page_no-1}}" aria-disabled="true">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a class="page-link" href="?page_no={{page_no-1}}">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {% endif %} {% if 1 not in total_count %}
+        <li class="page-item">
+            <a class="page-link" href="?page_no=1">
+                <span aria-hidden="true">1</span>
+            </a>
+        </li>
+        <li class="page-item disabled">
+            <a class="page-link" aria-disabled="true">
+                <span aria-hidden="true">...</span>
+            </a>
+        </li>
+        {% endif %} {% for page in total_count %} {% if page==page_no %}
+        <li class="page-item active"><a class="page-link" href="?page_no={{page}}">{{ page }}</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page_no={{page}}">{{ page }}</a></li>
+        {% endif %} {% endfor %} {% if 508 not in total_count %}
+        <li class="page-item disabled">
+            <a class="page-link" aria-disabled="true">
+                <span aria-hidden="true">...</span>
+            </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?page_no=508">
+                <span aria-hidden="true">508</span>
+            </a>
+        </li>
+        {% endif %} {% if page_no==508 %}
+        <li class="page-item disabled">
+            <a class="page-link" href="?page_no={{page_no+1}}" aria-disabled="true">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a class="page-link" href="?page_no={{page_no+1}}">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
 
-    {% endblock %}
+{% endblock %}

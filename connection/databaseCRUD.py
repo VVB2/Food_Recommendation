@@ -27,12 +27,12 @@ class DatabaseObject:
     def insertOne(self, data):
         self.DATABASE['Food'].insert_one(data)
 
-    def getFoodTitles(self):
-        food_titles = []
-        cursor = list(self.DATABASE['Food'].find({}, {"_id": 0, "ingredients": 0, "directions": 0, "link": 0, "narration": 0, "image_url": 0 }))
-        for document in cursor:
-            food_titles.append(document)
-        return food_titles
+    # def getFoodTitles(self):
+    #     food_titles = []
+    #     cursor = list(self.DATABASE['Food'].find({}, {"_id": 0, "ingredients": 0, "directions": 0, "link": 0, "narration": 0, "image_url": 0 }))
+    #     for document in cursor:
+    #         food_titles.append(document)
+    #     return food_titles
     
     def findRecommendedFood(self, food):
         food_data = []

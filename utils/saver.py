@@ -1,9 +1,8 @@
 import pandas as pd
 
-df = pd.read_csv("recipes_data.csv", nrows=15000)
+df = pd.read_csv('data/minified_data.csv', nrows=100)
 
-df = df.drop_duplicates(subset=["title"])
+# df['ingredients'] = df['ingredients'].astype('list')
 
-df["title"] = df["title"].str.strip()
-
-pd.DataFrame(df).to_csv("minified_data.csv", index=False, mode='w')
+for data in df.itertuples(index=False):
+    ingredients = getattr(data,'ingredients')
