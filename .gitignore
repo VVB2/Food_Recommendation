@@ -3,4 +3,3 @@ connection/__pycache__/*
 .env
 env/*
 utils/*
-Dockerfile

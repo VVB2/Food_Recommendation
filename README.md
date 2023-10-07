@@ -31,13 +31,13 @@ Our Food Recommendation System offers a wide range of features to enhance your c
 ## 📚 Demo
 
 #### Home Page
-[![Home Page](images/home.png)]()
+[![Home Page](images/home.png)](images/home.png)
 
 #### Recommendation Page
-![Alt text](images/recommendation.png)
+[![Alt text](images/recommendation.png)](images/recommendation.png)
 
 #### Autocomplete
-![Alt text](images/search.png)
+[![Alt text](images/search.png)](images/search.png)
 
 ## ⛳ Getting Started
 
